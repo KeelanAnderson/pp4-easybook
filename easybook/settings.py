@@ -46,7 +46,10 @@ INSTALLED_APPS = [
     'cloudinary_storage',
     'django.contrib.staticfiles',
     'cloudinary',
+    'location_field.apps.DefaultConfig',
+    'django_summernote',
     'booking',
+    
 ]
 
 MIDDLEWARE = [
