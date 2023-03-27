@@ -1,8 +1,80 @@
 {% extends "base.html" %}
 
 {% block content %}
-    
-    {% for post in post_list %}
-    {% endfor %}
+{% for post in post_list %}
+<div class="container">
+    <div class="row">
+        <div class="card col-md-4 col-lg-3">
+            <div class="image-container">
+                {% if "placeholder" in post.featured_image.url %}
+                <img class="card-img-top" src="#">
+                {% else %}
+                <img class="card-img-top" src=" {{ post.featured_image.url }}">
+                {% endif %}
+            </div>
+            <div class="card-body">
+                <h4 class="card-title">{{ post.title }}</h4>
+                <p class="card-subtitle">{{ post.service }}</p>
+                <p class="card-text"></p>
+                <a href="#" class="btn btn-primary">book</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
 
-{%endblock%}
+    {% if is_paginated %}
+    <nav aria-label="Page navigation">
+        <ul class="pagination justify-content-center">
+            {% if page_obj.has_previous %}
+            <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
+            {% endif %}
+            {% if page_obj.has_next %}
+            <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+
+            {% endif %}
+        </ul>
+    </nav>
+    {% endif %}
+</div>
+
+{% endblock %}
+
+<!-- <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="row">
+                    {% for post in post_list %}
+                    <div class="col-md-8">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <div class="image-container">
+                                    {% if "placeholder" in post.featured_image.url %}
+                                    <img class="card-img-top" src="#">
+                                    {% else %}
+                                    <img class="card-img-top" src=" {{ post.featured_image.url }}">
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        {% if forloop.counter|divisibleby:3 %}
+                    </div>
+                    <div class="row"></div>
+                    {% endif %}
+                    {% endfor %}
+
+                </div>
+            </div>
+            {% if is_paginated %}
+            <nav aria-label="Page navigation">
+                <ul class="pagination justify-content-center">
+                    {% if page_obj.has_previous %}
+                    <li><a href="?page={{ page_obj.previous_page_number }}" class="page-link">&laquo; PREV </a></li>
+                    {% endif %}
+                    {% if page_obj.has_next %}
+                    <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo;</a></li>
+
+                    {% endif %}
+                </ul>
+            </nav>
+            {% endif %}
+        </div> -->

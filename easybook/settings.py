@@ -147,3 +147,10 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+LOCATION_FIELD = {
+'provider.google.api': '//maps.google.com/maps/api/js?sensor=false',
+'provider.google.api_key': 'AIzaSyCl8EGhuqdUxsJZSTjAsS4MtZv-6beodJM',
+'provider.google.api_libraries': '',
+'provider.google.map.type': 'ROADMAP',
+}
