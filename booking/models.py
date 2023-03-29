@@ -1,3 +1,4 @@
+from django.core.validators import RegexValidator, validate_email
 from django.db import models
 from django.utils import timezone
 from django.contrib.auth.models import User
@@ -17,6 +18,10 @@ class Post(models.Model):
     content = models.TextField(default='')
     status = models.IntegerField(choices=STATUS, default=0)
     featured_image = CloudinaryField('image', default='placeholder')
+    phone_regex = RegexValidator(regex=r'^\+?1?\d{9,15}$',
+                                 message="Phone number must be in the format: '+999999999'. Up to 15 digits allowed.")
+    phone_number = models.CharField(validators=[phone_regex], max_length=17, blank=False, default='n/a')
+    email = models.EmailField(validators=[validate_email], blank=False, default='n/a')
     created_on = models.DateTimeField(default=timezone.now)
 
     class Meta:
