@@ -2,6 +2,15 @@
 
 {% block content %}
 
+<header class="bg-dark mb-5">
+    <div class="container py-5">
+        <div class="text-center text-white py-5">
+            <h2 class="display-4">EasyBook</h2>
+            <p>Bookings for small business</p>
+        </div>
+    </div>
+</header>
+
 <div class="container-fluid">
     <div class="row">
 
@@ -22,7 +31,7 @@
                             <h4 class="card-title">{{ post.title }}</h4>
                             <p class="card-subtitle">{{ post.profession }}</p>
                             <p class="card-text">{{ post.content }}</p>
-                            <p class="card-text"><i class="fa-regular fa-location-dot"></i> {{ post.city }}</p>
+                            <p class="card-text"><span><i class="fa-thin fa-location-dot fa-bounce"></i></span> {{ post.city }}</p>
                             <a href="{% url 'post_detail' post.slug  %}" class="btn btn-primary">book</a>
                         </div>
                     </div>
