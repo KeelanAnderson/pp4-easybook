@@ -7,7 +7,7 @@
     <div class="container">
         <div class="row gx-5">
             <div class="col-lg-8">
-                <h1>{{ post.title }}</h1>
+                <h1>{{ post.business_owner }}</h1>
                 <div id="carouselExampleControls" class="carousel slide mb-3" data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
@@ -30,10 +30,25 @@
                     </a>
                 </div>
                 <div>
-                    <h3>Services</h3>
-                    <div>
-                        <p></p>
-                        <br>
+                    <h3 class="border-bottom pb-3">Services</h3>
+
+                    <div class="container">
+                        <div class="row border-bottom">
+                            {% for service in services %}
+                            <div class="col-md-6 mb-3">
+                                <h4>{{ service.service_name }}</h4>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <p>Duration: 1 Hour</p>
+                            </div>
+                            <div class="col-md-6 mb-3 border-bottom">
+                                <p>Price: ${{ service.price }}</p>
+                            </div>
+                            <div class="col-md-6 mb-3 border-bottom">
+                                <a href="#" class="btn btn-primary mb-3">book</a>
+                            </div>
+                            {% endfor %}
+                        </div>
                     </div>
 
                 </div>
@@ -41,8 +56,11 @@
             </div>
             <div class="col-lg-4 bg dark">
                 <div>
-                <h5>Address</h5>
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25198.649940773365!2d144.96444794943216!3d-37.864238903550344!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad6686866392389%3A0x5045675218cdae0!2sSt%20Kilda%20VIC%203182!5e0!3m2!1sen!2sau!4v1680037352996!5m2!1sen!2sau" width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <h5>Address</h5>
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25198.649940773365!2d144.96444794943216!3d-37.864238903550344!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad6686866392389%3A0x5045675218cdae0!2sSt%20Kilda%20VIC%203182!5e0!3m2!1sen!2sau!4v1680037352996!5m2!1sen!2sau"
+                        width="400" height="300" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
                 <br>
                 <div class="border-bottom">
@@ -60,7 +78,7 @@
                 <br>
                 <div class="border-bottom">
                     <h5>Opening Hours:</h5>
-                    
+
                     <ul class="list-unstyled">
                         <li>Monday: 9:00-6:00pm</li>
                         <li>Tuesday: 9:00-6:00pm</li>

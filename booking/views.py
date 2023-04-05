@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import generic, View
-from .models import Post
+from .models import Post, Service
 
 
 class PostList(generic.ListView):
@@ -16,10 +16,15 @@ class PostDetail(View):
         queryset = Post.objects.filter(status=1)
         post = get_object_or_404(queryset, slug=slug)
 
+        service_queryset = Service.objects.filter(business_owner_id=post.id)
+        services = service_queryset.all()
+
         return render(
             request,
             "post_detail.html",
             {
-                'post': post
+                'post': post,
+                'services': services,
+
             },
         )
