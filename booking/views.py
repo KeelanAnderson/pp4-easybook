@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import generic, View
-from .models import Post, Service
+from .models import Post, Service, Booking
 
 
 class PostList(generic.ListView):
@@ -28,3 +28,10 @@ class PostDetail(View):
 
             },
         )
+
+
+class BookingList(generic.ListView):
+    model = Booking
+    queryset = Booking.objects.order_by("booking_time")
+    template_name = "booking.html"
+    paginate_by = 12

@@ -32,7 +32,7 @@
                             <p class="card-subtitle">{{ post.profession }}</p>
                             <p class="card-text">{{ post.content }}</p>
                             <p class="card-text"><span><i class="fa-thin fa-location-dot fa-bounce"></i></span> {{ post.city }}</p>
-                            <a href="{% url 'post_detail' post.slug  %}" class="btn btn-primary">book</a>
+                            <a href="{% url 'post_detail' post.slug  %}" class="btn btn-primary">See More</a>
                         </div>
                     </div>
                 </div>
@@ -43,6 +43,5 @@
 
     </div>
 </div> 
-
 
 {% endblock %}

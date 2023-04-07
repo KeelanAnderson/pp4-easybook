@@ -45,7 +45,7 @@
                                 <p>Price: ${{ service.price }}</p>
                             </div>
                             <div class="col-md-6 mb-3 border-bottom">
-                                <a href="#" class="btn btn-primary mb-3">book</a>
+                                <a href="{% url 'book' service_id=service.id %}" class="btn btn-primary mb-3">book</a>
                             </div>
                             {% endfor %}
                         </div>
