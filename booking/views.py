@@ -19,7 +19,7 @@ class PostList(generic.ListView):
     def get_queryset(self):
         queryset = super().get_queryset()
         queryset = queryset.filter(status=1).order_by("-created_on")
-        return queryset 
+        return queryset
 
 
 class PostDetail(View):
@@ -28,7 +28,7 @@ class PostDetail(View):
         queryset = Post.objects.filter(status=1)
         post = get_object_or_404(queryset, slug=slug)
 
-        service_queryset = Service.objects.filter(business_owner_id=post.id)
+        service_queryset = Service.objects.filter(title_id=post.id)
         services = service_queryset.all()
 
         return render(
@@ -55,7 +55,6 @@ class CreatePostView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
         return super().form_valid(form)
 
 
-
 # class BusinessActionMixin:
 
 #     fields = ['title', 'slug', 'profession', 'about', 'display_services', 'city', 'location', 'featured_image', 'carousel_image', 'phone_number', 'email', 'status']
@@ -67,9 +66,6 @@ class CreatePostView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
 #     def form_valid(self, form):
 #         messages.info(self.request, self.success_msg)
 #         return super().form_valid(form)
-
-
-
 
     # def form_valid(self, form):
     #     return super().form_valid(form)

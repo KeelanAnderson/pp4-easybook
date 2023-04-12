@@ -21,6 +21,21 @@
   </div>
 </div>
 
+{% endblock %}
 
+{% block extra_js %}
+<script>
 
+  const titleField = document.querySelector('#id_title');
+  const slugField = document.querySelector('#id_slug');
+
+  slugField.value = titleField.value.toLowerCase().replace(/\s+/g, '-');
+
+  // if title field is updated slug field is updated also
+
+  titleField.addEventListener('input', function() {
+    slugField.value = titleField.value.toLowerCase().replace(/\s+/g, '-');
+  });
+  
+</script>
 {% endblock %}

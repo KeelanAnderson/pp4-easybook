@@ -10,7 +10,7 @@ STATUS = ((0, 'draft'), (1, 'public'))
 
 
 class Post(models.Model):
-    business_owner = models.CharField(max_length=80, unique=True)
+    title = models.CharField(max_length=80, unique=True)
     slug = models.SlugField(max_length=80, unique=True)
     profession = models.CharField(max_length=80, default='n/a')
     about = models.CharField(max_length=200, default='')
@@ -30,12 +30,12 @@ class Post(models.Model):
         ordering = ["-created_on"]
 
     def __str__(self):
-        return self.business_owner
+        return self.title
 
 
 class Service(models.Model):
     service_name = models.CharField(max_length=80)
-    business_owner = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='services')
+    title = models.ForeignKey(Post, on_delete=models.CASCADE, related_name='services')
     price = models.DecimalField(max_digits=10, decimal_places=2)
 
     def __str__(self):
@@ -57,7 +57,7 @@ class Booking(models.Model):
 
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     service = models.ForeignKey('Service', on_delete=models.CASCADE)
-    business_owner = models.ForeignKey('Post', on_delete=models.CASCADE)
+    title = models.ForeignKey('Post', on_delete=models.CASCADE)
     booking_time = models.CharField(
         max_length=2,
         choices=TIMESLOT_CHOICES,
@@ -69,4 +69,4 @@ class Booking(models.Model):
     created_on = models.DateTimeField(default=timezone.now)
 
     def __str__(self):
-        return f"{self.user.username}'s Appointment for {self.service} with {self.business_owner} on {self.booking_date} at {self.booking_time}"
+        return f"{self.user.username}'s Appointment for {self.service} with {self.title} on {self.booking_date} at {self.booking_time}"
