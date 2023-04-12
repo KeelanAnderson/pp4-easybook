@@ -15,10 +15,16 @@
 
   <div class="container">
     <div class="row d-flex justify-content-center">
-      {% for choice in object_list %}
-      <div class="col-sm-3 shadow-lg text-center border rounded m-3 p-3 bg-primary text-white">{{ choice.get_booking_time_display }}</div>
-      {% endfor %}
+      <!-- {% if booking_list %} -->
 
+      <!-- {% for booking in booking_list %}
+      {{ booking }} -->
+      <div class="col-sm-3 shadow-lg text-center border rounded m-3 p-3 bg-primary text-white">{{ booking.booking_time|time }}</div>
+      <!-- {% endfor %} -->
+
+      <!-- {% else %} -->
+      <p>No bookings available</p>
+      <!-- {% endif %} -->
     </div>
   </div>
 

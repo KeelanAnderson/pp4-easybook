@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 my-3 offset-md-2">
+
+      <h2>List your Business</h2>
+
+      <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button type="submit">Submit</button>
+
+      </form>
+    </div>
+  </div>
+</div>
+
+
+
+{% endblock %}
