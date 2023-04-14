@@ -1,10 +1,12 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.utils.text import slugify
 from django.urls import reverse_lazy
 from django.views import generic, View
+from django.contrib.auth.mixins import UserPassesTestMixin
 from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
-from django.views.generic import CreateView, DetailView, UpdateView, FormView
+from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
 from .models import Post, Service, Booking
 from .forms import CreatePostForm
 
@@ -22,9 +24,50 @@ class PostList(generic.ListView):
         return queryset
 
 
+def manage_post(request):
+    return render(request, 'manage_post.html')
+
+
+class CreatePostView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
+    model = Post
+    form_class = CreatePostForm
+    template_name = 'create_post.html'
+    success_url = reverse_lazy('home')
+    success_message = 'Post created successfully'
+
+    def form_valid(self, form):
+        form.instance.account = self.request.user
+        return super().form_valid(form)
+
+
+class UpdatePostView(UserPassesTestMixin, LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+    model = Post
+    form_class = CreatePostForm
+    template_name = 'create_post.html'
+    success_url = reverse_lazy('home')
+    success_message = 'Post updated successfully'
+
+    def form_valid(self, form):
+        form.instance.account = self.request.user
+        form.save()
+        return super().form_valid(form)
+
+    def test_func(self):
+        post = Post.objects.filter(slug=self.kwargs['slug']).first()
+        return post.account == self.request.user
+
+
+class DeletePostView(DeleteView):
+    model = Post
+    success_url = reverse_lazy("home")
+    template_name = 'create_post.html'
+
+
 class PostDetail(View):
 
     def get(self, request, slug, *args, **kwargs):
+        if not slug:
+            return redirect('home')
         queryset = Post.objects.filter(status=1)
         post = get_object_or_404(queryset, slug=slug)
 
@@ -40,47 +83,6 @@ class PostDetail(View):
 
             },
         )
-
-
-class CreatePostView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
-    model = Post
-    form_class = CreatePostForm
-    template_name = 'create_post.html'
-    success_url = reverse_lazy('home')
-    success_message = 'Post created successfully'
-
-    def form_valid(self, form):
-        form.instance.author = self.request.user
-        form.save()
-        return super().form_valid(form)
-
-
-# class BusinessActionMixin:
-
-#     fields = ['title', 'slug', 'profession', 'about', 'display_services', 'city', 'location', 'featured_image', 'carousel_image', 'phone_number', 'email', 'status']
-
-#     @property
-#     def success_msg(self):
-#         return NotImplemented
-
-#     def form_valid(self, form):
-#         messages.info(self.request, self.success_msg)
-#         return super().form_valid(form)
-
-    # def form_valid(self, form):
-    #     return super().form_valid(form)
-
-
-# class BusinessFormUpdateView(LoginRequiredMixin, BusinessActionMixin, UpdateView):
-#     model = Post
-#     form_class = BusinessForUpdate
-#     template_name = 'update_post.html'
-#     fields = ['title', 'slug', 'profession', 'about', 'display_services', 'city', 'location', 'featured_image', 'carousel_image', 'phone_number', 'email', 'status']
-#     success_msg = 'Business page Updated'
-
-
-# class BusinessFormDetailView(DetailView):
-#     model = Post
 
 
 class BookingList(generic.ListView):

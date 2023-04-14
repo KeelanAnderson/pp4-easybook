@@ -26,24 +26,24 @@
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-            <a class="navbar-brand " href="#">EasyBook</a>
+            <a class="navbar-brand " href="{% url 'home' %}">EasyBook</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
                 aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
-                  <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
-                  {% if user.is_authenticated %}
-                  <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
-                  <a class="nav-link" href="{% url 'create_post' %}">List a Business</a>
-                  {% else %}
-                  <a class="nav-link" href="{% url 'account_signup' %}">Register</a>
-                  <a class="nav-link" href="{% url 'account_login' %}">Login</a>
-                  
-                  {% endif %}
+                    <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Home</a>
+                    {% if user.is_authenticated %}
+                    <a class="nav-link" href="{% url 'account_logout' %}">Logout</a>
+                    <a class="nav-link" href="{% url 'manage_post' %}">List Your Business</a>
+                    {% else %}
+                    <a class="nav-link" href="{% url 'account_signup' %}">Register</a>
+                    <a class="nav-link" href="{% url 'account_login' %}">Login</a>
+
+                    {% endif %}
                 </div>
-              </div>
+            </div>
         </div>
     </nav>
 

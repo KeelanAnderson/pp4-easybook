@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>manage post</h2>
+
+<a class="nav-link" href="{% url 'create_post' %}">List Your Business</a>
+{% if post.slug %}
+<a class="nav-link" href="{% url 'update_post' slug=post.slug %}">update Your Business</a>
+<a class="nav-link" href="{% url 'delete_post' slug=post.slug %}">delete Your Business</a>
+{% else %}
+  <a href="#">Edit</a>
+  <a href="#">Delete</a>
+{% endif %}
+
+
+
+
+{% endblock %}

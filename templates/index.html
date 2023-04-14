@@ -22,8 +22,9 @@
                     <div class="card mb-3">
                         <div class="card-body rounded border-dark">
 
-                            <div class="image-container">{% if "placeholder" in post.featured_image.url %}
-                                <img class="card-img-top d-flex align-items-center img-fluid" src="#">
+                            <div class="image-container">
+                                {% if "placeholder" in post.featured_image.url %}
+                                <img class="card-img-top d-flex align-items-center img-fluid" src="https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=612x612&w=0&k=20&c=rnCKVbdxqkjlcs3xH87-9gocETqpspHFXu5dIGB4wuM=">
                                 {% else %}
                                 <img class="card-img-top d-flex align-items-center img-fluid" src=" {{ post.featured_image.url }}">
                                 {% endif %}

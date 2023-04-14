@@ -6,12 +6,14 @@ from cloudinary.models import CloudinaryField
 from location_field.models.plain import PlainLocationField
 from datetime import datetime
 
+
 STATUS = ((0, 'draft'), (1, 'public'))
 
 
 class Post(models.Model):
     title = models.CharField(max_length=80, unique=True)
     slug = models.SlugField(max_length=80, unique=True)
+    account = models.ForeignKey(User, on_delete=models.CASCADE, default=1)
     profession = models.CharField(max_length=80, default='n/a')
     about = models.CharField(max_length=200, default='')
     display_services = models.ManyToManyField('Service', blank=True)
@@ -31,6 +33,9 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse("post_detail", kwargs={"slug": self.slug})
 
 
 class Service(models.Model):

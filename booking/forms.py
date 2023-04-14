@@ -6,13 +6,14 @@ from .models import Post
 
 class CreatePostForm(forms.ModelForm):
 
-    title = forms.CharField(max_length=255)
-    slug = forms.CharField(max_length=255, required=False)
+    title = forms.CharField(max_length=80, required=True)
+    slug = forms.CharField(max_length=80, required=True)
 
     class Meta:
         model = Post
         fields = [
             'title',
+            'slug',
             'profession',
             'about',
             'city',
@@ -24,9 +25,9 @@ class CreatePostForm(forms.ModelForm):
             'status',
         ]
 
-    def clean_title(self):
-        title = self.cleaned_data['title']
-        slug = slugify(title)
-        if Post.objects.filter(slug=slug).exists():
-            raise forms.ValidationError('A post with this title already exists.')
-        return slug
+    # def clean_title(self):
+    #     title = self.cleaned_data['title']
+    #     slug = slugify(title)
+    #     if Post.objects.filter(slug=slug).exists():
+    #         raise forms.ValidationError('A post with this title already exists.')
+    #     return slug
