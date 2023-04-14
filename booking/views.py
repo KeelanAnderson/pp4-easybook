@@ -57,10 +57,19 @@ class UpdatePostView(UserPassesTestMixin, LoginRequiredMixin, SuccessMessageMixi
         return post.account == self.request.user
 
 
-class DeletePostView(DeleteView):
+class DeletePostView(UserPassesTestMixin, DeleteView):
     model = Post
     success_url = reverse_lazy("home")
     template_name = 'create_post.html'
+
+    def form_valid(self, form):
+        form.instance.account = self.request.user
+        form.save()
+        return super().form_valid(form)
+
+    def test_func(self):
+        post = Post.objects.filter(slug=self.kwargs['slug']).first()
+        return post.account == self.request.user
 
 
 class PostDetail(View):
