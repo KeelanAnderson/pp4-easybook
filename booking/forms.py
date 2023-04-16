@@ -1,7 +1,7 @@
 from django import forms
 from django.utils.text import slugify
 from django.forms import ModelForm
-from .models import Post
+from .models import Post, Service
 
 
 class CreatePostForm(forms.ModelForm):
@@ -25,9 +25,28 @@ class CreatePostForm(forms.ModelForm):
             'status',
         ]
 
-    # def clean_title(self):
-    #     title = self.cleaned_data['title']
-    #     slug = slugify(title)
-    #     if Post.objects.filter(slug=slug).exists():
-    #         raise forms.ValidationError('A post with this title already exists.')
-    #     return slug
+
+class CreateServiceForm(forms.ModelForm):
+
+    title = forms.ModelChoiceField(queryset=Post.objects.all())
+
+    class Meta:
+        model = Service
+        fields = ['service_name', 'title', 'price']
+
+
+class UpdateServiceForm(forms.ModelForm):
+
+    title = forms.ModelChoiceField(queryset=Post.objects.all())
+
+    class Meta:
+        model = Service
+        fields = ['service_name', 'price']
+
+
+class DeleteServiceForm(forms.ModelForm):
+
+    class Meta:
+        model = Service
+        fields = ['service_name']
+

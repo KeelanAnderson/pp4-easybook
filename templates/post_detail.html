@@ -2,31 +2,31 @@
 
 {% block content %}
 
+<h1>{{ service_id }}</h1>
 
 <section>
     <div class="container">
         <div class="row gx-5">
             <div class="col-lg-8">
                 <h1>{{ post.title }}</h1>
-                <a href="{% url 'update_post' post.slug %}">Update</a>
-                <a href="{% url 'delete_post' post.slug %}">Delete</a>
-
 
                 <div id="carouselExampleControls" class="carousel slide mb-3" data-ride="carousel">
                     <div class="carousel-inner">
                         <div class="carousel-item active">
                             {% if "placeholder" in post.featured_image.url %}
-                                <img class="d-block w-100" src="https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=612x612&w=0&k=20&c=rnCKVbdxqkjlcs3xH87-9gocETqpspHFXu5dIGB4wuM=">
-                                {% else %}
-                                <img class="d-block w-100" src=" {{ post.featured_image.url }}">
-                                {% endif %}
+                            <img class="d-block w-100"
+                                src="https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=612x612&w=0&k=20&c=rnCKVbdxqkjlcs3xH87-9gocETqpspHFXu5dIGB4wuM=">
+                            {% else %}
+                            <img class="d-block w-100" src=" {{ post.featured_image.url }}">
+                            {% endif %}
                         </div>
                         <div class="carousel-item">
                             {% if "placeholder" in post.gallery_image.url %}
-                                <img class="d-block w-100" src="https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=612x612&w=0&k=20&c=rnCKVbdxqkjlcs3xH87-9gocETqpspHFXu5dIGB4wuM=">
-                                {% else %}
-                                <img class="d-block w-100" src=" {{ post.gallery_image.url }}">
-                                {% endif %}
+                            <img class="d-block w-100"
+                                src="https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=612x612&w=0&k=20&c=rnCKVbdxqkjlcs3xH87-9gocETqpspHFXu5dIGB4wuM=">
+                            {% else %}
+                            <img class="d-block w-100" src=" {{ post.gallery_image.url }}">
+                            {% endif %}
                         </div>
                         <div class="carousel-item">
                             <img class="d-block w-100" src="..." alt="Third slide">
@@ -47,19 +47,35 @@
                     <div class="container">
                         <div class="row border-bottom">
                             {% for service in services %}
-                            <div class="col-md-6 mb-3">
-                                <h4>{{ service.service_name }}</h4>
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-4-md">
+                                        <div class="">
+                                            <h5>{{ service.service_name }}</h5>
+                                        </div>
+                                        <div class="">
+                                            <p>Duration: 1 Hour</p>
+                                        </div>
+                                        <div class="">
+                                            <p>Price: ${{ service.price }}</p>
+                                        </div>
+                                        <div class="">
+                                            {% if user.is_authenticated %}
+                                            <div class="col-md-6 mb-3 border-bottom">
+                                                <a href="{% url 'update_service' service.id %}"
+                                                    class="btn btn-primary mb-3">Update</a>
+                                                <a href="{% url 'delete_service' service.id %}"
+                                                    class="btn btn-danger mb-3">Delete</a>
+
+                                            </div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-md-6 mb-3">
-                                <p>Duration: 1 Hour</p>
-                            </div>
-                            <div class="col-md-6 mb-3 border-bottom">
-                                <p>Price: ${{ service.price }}</p>
-                            </div>
-                            <div class="col-md-6 mb-3 border-bottom">
-                                <a href="{% url 'book' service_id=service.id %}" class="btn btn-primary mb-3">book</a>
-                            </div>
+
                             {% endfor %}
+
                         </div>
                     </div>
 
@@ -117,4 +133,36 @@
 
 </section>
 
+{% if user.is_authenticated %}
+<section class="container">
+    <div class="row">
+        <div class="col-md-12 d-flex justify-content-center m-5">
+            <a href="{% url 'update_post' post.slug %}" class="btn btn-primary text-white p-3">Update</a>
+            <a href="{% url 'delete_post' post.slug %}" class="btn btn-danger text-white p-3">Delete</a>
+        </div>
+    </div>
+</section>
+{% endif %}
+
 {% endblock %}
+
+
+<div class="container">
+    <div class="row">
+        <div class="col-12-md">
+            <div class="col-md-3">{{ service.service_name }}</div>
+            <div class="col-md-3">
+                <p>Duration: 1 Hour</p>
+            </div>
+            <div class="col-md-3">
+                <p>Price: ${{ service.price }}</p>
+            </div>
+            <div class="col-md-3">{% if user.is_authenticated %}
+                <div class="col-md-6 mb-3 border-bottom">
+                    <a href="{% url 'update_service' service.id %}" class="btn btn-primary mb-3">Update</a>
+                    <a href="{% url 'delete_service' service.id %}" class="btn btn-danger mb-3">Delete</a>
+                </div>
+                {% endif %}</div>
+        </div>
+    </div>
+</div>

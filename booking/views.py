@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
+from django.http import Http404
 from django.utils.text import slugify
 from django.urls import reverse_lazy
 from django.views import generic, View
@@ -7,8 +8,8 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
-from .models import Post, Service, Booking
-from .forms import CreatePostForm
+from .models import Post, Service
+from .forms import CreatePostForm, CreateServiceForm, UpdateServiceForm, DeleteServiceForm
 
 
 class PostList(generic.ListView):
@@ -24,15 +25,19 @@ class PostList(generic.ListView):
         return queryset
 
 
-def manage_post(request):
-    return render(request, 'manage_post.html')
+class ManagePostView(LoginRequiredMixin, View):
+    def get(self, request):
+        return render(request, 'manage_post.html')
+
+    def post(self, request):
+        return render(request, 'manage_post.html')
 
 
 class CreatePostView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     model = Post
     form_class = CreatePostForm
     template_name = 'create_post.html'
-    success_url = reverse_lazy('home')
+    success_url = reverse_lazy('manage_post')
     success_message = 'Post created successfully'
 
     def form_valid(self, form):
@@ -49,7 +54,6 @@ class UpdatePostView(UserPassesTestMixin, LoginRequiredMixin, SuccessMessageMixi
 
     def form_valid(self, form):
         form.instance.account = self.request.user
-        form.save()
         return super().form_valid(form)
 
     def test_func(self):
@@ -64,11 +68,11 @@ class DeletePostView(UserPassesTestMixin, DeleteView):
 
     def form_valid(self, form):
         form.instance.account = self.request.user
-        form.save()
         return super().form_valid(form)
 
     def test_func(self):
         post = Post.objects.filter(slug=self.kwargs['slug']).first()
+        print(post)
         return post.account == self.request.user
 
 
@@ -94,8 +98,32 @@ class PostDetail(View):
         )
 
 
-class BookingList(generic.ListView):
-    model = Booking
-    template_name = "booking.html"
-    paginate_by = 12
-    context_object_name = 'booking_list'
+class CreateServiceView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
+    model = Service
+    form_class = CreateServiceForm
+    template_name = 'create_service_form.html'
+    success_url = reverse_lazy('manage_post')
+    success_message = 'Service created successfully'
+
+    def form_valid(self, form):
+        post = form.cleaned_data['title']
+        print(self.request.user)
+        if self.request.user != post.account:
+            raise Http404("You can't create a service for this post.")
+        form.instance.post = post
+        return super().form_valid(form)
+
+
+class UpdateServiceView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+    model = Service
+    form_class = UpdateServiceForm
+    template_name = 'create_service_form.html'
+    success_url = reverse_lazy('manage_post')
+    success_message = 'Service update successfully'
+
+
+class DeleteServiceView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
+    model = Service
+    form_class = DeleteServiceForm
+    template_name = 'create_service_form.html'
+    success_url = reverse_lazy('manage_post')
