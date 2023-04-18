@@ -38,13 +38,13 @@ class CreatePostView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     model = Post
     form_class = CreatePostForm
     template_name = 'create_post.html'
-    success_url = 'manage_post/'
+    success_url = reverse_lazy('manage_post')
     success_message = "%(calculated_field)s was created successfully"
 
     def get_success_message(self, cleaned_data):
         return self.success_message % dict(
             cleaned_data,
-            calculated_field=self.object.calculated_field,
+            calculated_field=self.object.title
         )
 
     def form_valid(self, form):
@@ -59,7 +59,13 @@ class UpdatePostView(
     form_class = CreatePostForm
     template_name = 'create_post.html'
     success_url = reverse_lazy('home')
-    success_message = 'Post updated successfully'
+    success_message = "%(calculated_field)s was updated successfully"
+
+    def get_success_message(self, cleaned_data):
+        return self.success_message % dict(
+            cleaned_data,
+            calculated_field=self.object.title
+        )
 
     def form_valid(self, form):
         form.instance.account = self.request.user
@@ -74,6 +80,12 @@ class DeletePostView(UserPassesTestMixin, DeleteView):
     model = Post
     success_url = reverse_lazy("home")
     template_name = 'create_post.html'
+    success_message = "Post was deleted successfully"
+
+    def get_success_message(self, cleaned_data):
+        return self.success_message % dict(
+            cleaned_data
+        )
 
     def form_valid(self, form):
         form.instance.account = self.request.user
@@ -112,7 +124,13 @@ class CreateServiceView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     form_class = CreateServiceForm
     template_name = 'create_service_form.html'
     success_url = reverse_lazy('manage_post')
-    success_message = 'Service created successfully'
+    success_message = "%(calculated_field)s was created successfully"
+
+    def get_success_message(self, cleaned_data):
+        return self.success_message % dict(
+            cleaned_data,
+            calculated_field=self.object.service_name
+        )
 
     def form_valid(self, form):
         post = form.cleaned_data['title']
@@ -127,12 +145,25 @@ class UpdateServiceView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = Service
     form_class = UpdateServiceForm
     template_name = 'create_service_form.html'
-    success_url = reverse_lazy('manage_post')
-    success_message = 'Service update successfully'
+    success_url = reverse_lazy('home')
+    success_message = "%(calculated_field)s was updated successfully"
+
+    def get_success_message(self, cleaned_data):
+        return self.success_message % dict(
+            cleaned_data,
+            calculated_field=self.object.service_name
+        )
 
 
 class DeleteServiceView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     model = Service
     form_class = DeleteServiceForm
     template_name = 'create_service_form.html'
-    success_url = reverse_lazy('manage_post')
+    success_url = reverse_lazy('home')
+    success_message = "%(calculated_field)s was deleted successfully"
+
+    def get_success_message(self, cleaned_data):
+        return self.success_message % dict(
+            cleaned_data,
+            calculated_field=self.object.service_name
+        )
