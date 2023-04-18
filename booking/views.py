@@ -144,7 +144,7 @@ class CreateServiceView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
 class UpdateServiceView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
     model = Service
     form_class = UpdateServiceForm
-    template_name = 'create_service_form.html'
+    template_name = 'update_service.html'
     success_url = reverse_lazy('home')
     success_message = "%(calculated_field)s was updated successfully"
 
@@ -157,8 +157,8 @@ class UpdateServiceView(LoginRequiredMixin, SuccessMessageMixin, UpdateView):
 
 class DeleteServiceView(LoginRequiredMixin, SuccessMessageMixin, DeleteView):
     model = Service
-    form_class = DeleteServiceForm
-    template_name = 'create_service_form.html'
+    form_class = CreateServiceForm
+    template_name = 'delete_service.html'
     success_url = reverse_lazy('home')
     success_message = "%(calculated_field)s was deleted successfully"
 

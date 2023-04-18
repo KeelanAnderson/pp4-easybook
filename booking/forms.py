@@ -41,15 +41,7 @@ class CreateServiceForm(forms.ModelForm):
 
 class UpdateServiceForm(forms.ModelForm):
 
-    title = forms.ModelChoiceField(queryset=Post.objects.all())
-
     class Meta:
         model = Service
         fields = ['service_name', 'price']
 
-
-class DeleteServiceForm(forms.ModelForm):
-
-    class Meta:
-        model = Service
-        fields = ['service_name']

@@ -11,6 +11,6 @@ urlpatterns = [
     path("<slug:slug>/detail/", PostDetail.as_view(), name="post_detail"),
     path("manage_post/", ManagePostView.as_view(), name="manage_post"),
     path("create_service/", CreateServiceView.as_view(), name="create_service"),
-    path("<int:post>/update/", UpdateServiceView.as_view(), name="update_service"),
-    path("<int:post>/delete/", DeleteServiceView.as_view(), name="delete_service"),
+    path("<pk>/update_service/", UpdateServiceView.as_view(), name="update_service"),
+    path("<pk>/delete_service/", DeleteServiceView.as_view(), name="delete_service"),
 ]

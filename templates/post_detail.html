@@ -36,6 +36,7 @@
                 </a>
             </div>
             <h3 class="border-bottom pb-3">Services</h3>
+            <a href="{% url 'create_service' %}" class="btn btn-primary mb-3">Create</a>
             {% for service in services %}
             <div class="col-sm-4">
                 <div class="">
@@ -50,6 +51,7 @@
                 <div class="">
                     {% if user.is_authenticated %}
                     <div class="col-md-6 mb-3 border-bottom">
+                        
                         <a href="{% url 'update_service' service.id %}" class="btn btn-primary mb-3">Update</a>
                         <a href="{% url 'delete_service' service.id %}" class="btn btn-danger mb-3">Delete</a>
 
