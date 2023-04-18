@@ -100,17 +100,31 @@ price
 
 #### HomePage
 
+- The HomePage consists of the business posts. The posts are displayed in a list view as cards. Once their are more than 8 posts the page is paginated and the user can navigate through the pages searching the posts. Each posts is displayed in a card with a featured image, the post title, the profession of the business owner, their location and a link to the post detail page.
+
 #### Post Detail page
 
+- The post detail page consists are all the businesses information provided in the business post form. At the top of the page is the post title. Under the title is a carousel containing the feature image and any gallery images for the business. On the right hand side of the page is a coloumn containing more business information. at the top is a google maps iframe that will display the businesses location. Under here there is an About section where they can write a paragraph about their business. under this is the contact section displaying their email and phone number. their is also a opening hours section and socials section. Then there is the services section where the businesses can display all of their services they have created. The service name, price and duration is displayed. For Authenticated users there are buttons at the bottom of the page to update and delete the post list. when clicked the update buttom will bring users to a form page where then can update the post and the delete button to a page where they must submit the deletion.
+
 #### Services section
+- Then there is the services section where the businesses can display all of their services they have created. The service name, price and duration is displayed. Services are cretaed using the create service form on the manage posts page, They are linked to the post when created and then diplayed on the post detail page.
 
 #### Manage Posts 
 
+-The Manage Posts page can be access through the link in the navbar. Only authenticated users can access this page. the page is very simple and contains two buttons linking the the create business post form and the create services forms.
+
 #### Create Services Form
+
+- The create services form is very short and smiple. Users must provide the services name and the price and also provide the post the service is linked to. If a user tries to add a service to a post they didnt create they will be taken to a 404 error page.
 
 #### Create Post Form
 
+- The create post form consists are the post title, slug, profession, about, display services, location, city, feature image field and gallery image field along with their phone number and email which both have validators. their is also a stautus input where the user can make their post public or a draft for the admin panel.
+
 ### Future Features
+- Eventually I would like to have Account registion for customers where they have access to more features such as a rate and reviews section where then can rate the business they have used. I would also like to add a booking system so that users can make appointments as a specific time and date where they would also have full CRUD functionality where then can change and cancel appointments. The Business owner would also receive notice of the appointments made and could change or cancal dates to suit their needs aswell. 
+
+- I would also like to add a search bar to the homepage where users can search through posts and services by name, location and Industry. this would only be neccessary if their was a large number of users on the website and navigation through the site became tedious
 
 ## Testing
 
@@ -118,42 +132,53 @@ price
 I have manually tested this project be doing the following:
 
 #### Navigation
-- Expected:
-- Testing:
-- Result:
-- Fix:
+- Expected: All naviation links direct users to the intended pages.
+- Testing: Clicked all link to see if they worked and made sure theyre were no dead links in my code or incorrectly linked.
+- Result: All links work as expected.
+- Fix: No Fix needed.
+
+- Expected: Only authenticated users can access the manage posts page.
+- Testing: logged out and navigated through the site looking for a link
+- Result: The link is only displayed in the navbar when users are logged in.
+- Fix: No Fix needed.
 
 #### Forms
-- Expected:
-- Testing:
-- Result:
-- Fix:
+- Expected: The create post form posts all the data to the database correctly and displayes the post. The users should also be alerted if the posts is created successfully. All required links must be filled and validated correctly.
+
+- Testing: I filled out the form multiple times leaving out each field to see if a was prompted to fill them In. The phone and Email field have validators so they must be in the correct format i checked if these validators were working. once the form was submitted I checked if the user was alerted of the changes and if the post was now being displayed in the Homepage. 
+
+- Result: All fields and validators seemed to be working fine and prompted my when they werent filled out. When the form was filled out and sumbitted I noticed that I was not alerted if it was successful or not. I there checked if the post was diplaying which it was but I noticed that the plaCeholder for the images was still displaying and this was unexpected. I then went to the admin panel to see if the data in the form was successfully posted to the database. I learned that everything was working perfectly except for the images files so there were a number of things that needed fixing.
+
+- Fix: I had to add enctype="multipart/form-data" to the form element so that images could be uploaded. This fixed the images problem straight away. 
 
 #### Responsiveness
-- Expected:
-- Testing:
-- Result:
-- Fix:
+- Expected: That all pages are fully responsive on all screen sizes small, medium and large.
+
+- Testing:I checked the responsiveness of each page in the chrome dev tools and selected every different screen size that was available.
+
+- Result: Some sections such as services setion and the forms were not responsive so they needed to be adjusted
+
+- Fix: I adjusted my bootstrap classes and div to make everything more responsive on small screens.
 
 #### User Account
-- Expected:
-- Testing:
-- Result:
-- Fix:
+- Expected: Users can login, sign up and logout sucesssfully. They must provide a valid username and password. Once users are logged in they can use the authenticated functionality eg. making posts. When users login, logout or register they should be alerted if successful. If the user provides details that do not match the criteria they should be prompted and not able to make an account.
 
-#### Content
-- Expected:
-- Testing:
-- Result:
-- Fix:
+- Testing: I first registered for an account. I typed 'TEST' into the email field and first then a properly formatted email. I then typed 'test123' for the password and then 'test1234' then a matching password. Then I typed a more complicated password. then I typed the username 'Test Account 123' and then 'TestAccount123'
+
+- Result: I was promped correctly for each, the mismatched passwords, for the password being to similar to username and also being to small. The username and passwords must not contain spaces and the user was prompted correctly. If an incorrect email was typed in it was not accepted and the user was prompted to fix it. Everything was working perfectly expect the user was not alerted upon a successful sign in or when logging out.
+
+- Fix: I had to add alert messages for when the user registered, logged in and logged out successfully.
+
+
+#### Validators
+- HTML
+- CSS
+- Python
 
 #### Performance
-- Expected:
-- Testing:
-- Result:
-- Fix:
 
-### Bugs
+- lighthouse
+- SEO
 
 
 ## Technologies Used

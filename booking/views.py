@@ -9,7 +9,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
 from .models import Post, Service
-from .forms import CreatePostForm, CreateServiceForm, UpdateServiceForm, DeleteServiceForm
+from .forms import CreatePostForm, CreateServiceForm
+from .forms import UpdateServiceForm, DeleteServiceForm
 
 
 class PostList(generic.ListView):
@@ -45,7 +46,9 @@ class CreatePostView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
         return super().form_valid(form)
 
 
-class UpdatePostView(UserPassesTestMixin, LoginRequiredMixin, SuccessMessageMixin, UpdateView):
+class UpdatePostView(
+    UserPassesTestMixin, LoginRequiredMixin, SuccessMessageMixin, UpdateView
+):
     model = Post
     form_class = CreatePostForm
     template_name = 'create_post.html'
