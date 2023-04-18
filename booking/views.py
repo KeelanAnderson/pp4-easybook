@@ -38,8 +38,14 @@ class CreatePostView(LoginRequiredMixin, SuccessMessageMixin, CreateView):
     model = Post
     form_class = CreatePostForm
     template_name = 'create_post.html'
-    success_url = reverse_lazy('manage_post')
-    success_message = 'Post created successfully'
+    success_url = 'manage_post/'
+    success_message = "%(calculated_field)s was created successfully"
+
+    def get_success_message(self, cleaned_data):
+        return self.success_message % dict(
+            cleaned_data,
+            calculated_field=self.object.calculated_field,
+        )
 
     def form_valid(self, form):
         form.instance.account = self.request.user

@@ -53,4 +53,3 @@ class DeleteServiceForm(forms.ModelForm):
     class Meta:
         model = Service
         fields = ['service_name']
-
