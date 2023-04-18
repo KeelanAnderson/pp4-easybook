@@ -3,3 +3,7 @@
     width: 100%;
     overflow: hidden;
   }
+
+#google-maps-iframe {
+  width: 100%;
+}
