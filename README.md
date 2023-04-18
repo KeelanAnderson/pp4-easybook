@@ -111,7 +111,7 @@ price
 
 #### Manage Posts 
 
--The Manage Posts page can be access through the link in the navbar. Only authenticated users can access this page. the page is very simple and contains two buttons linking the the create business post form and the create services forms.
+- The Manage Posts page can be access through the link in the navbar. Only authenticated users can access this page. the page is very simple and contains two buttons linking the the create business post form and the create services forms.
 
 #### Create Services Form
 
@@ -132,33 +132,29 @@ price
 I have manually tested this project be doing the following:
 
 #### Navigation
-- Expected: All naviation links direct users to the intended pages.
-- Testing: Clicked all link to see if they worked and made sure theyre were no dead links in my code or incorrectly linked.
-- Result: All links work as expected.
-- Fix: No Fix needed.
-
-- Expected: Only authenticated users can access the manage posts page.
-- Testing: logged out and navigated through the site looking for a link
-- Result: The link is only displayed in the navbar when users are logged in.
+- Expected: All naviation links direct users to the intended pages. Only authenticated users can access the manage posts page.
+- Testing: Clicked all link to see if they worked and made sure theyre were no dead links in my code or incorrectly linked. Logged out and navigated through the site looking for a link
+- Result: All links work as expected. The link is only displayed in the navbar when users are logged in.
 - Fix: No Fix needed.
 
 #### Forms
 - Expected: The create post form posts all the data to the database correctly and displayes the post. The users should also be alerted if the posts is created successfully. All required links must be filled and validated correctly.
 
-- Testing: I filled out the form multiple times leaving out each field to see if a was prompted to fill them In. The phone and Email field have validators so they must be in the correct format i checked if these validators were working. once the form was submitted I checked if the user was alerted of the changes and if the post was now being displayed in the Homepage. 
+- Testing: I filled out the form multiple times leaving out each field to see if a was prompted to fill them In. The phone and Email field have validators so they must be in the correct format I checked if these validators were working. once the form was submitted I checked if the user was alerted of the changes and if the post was now being displayed in the Homepage. 
 
-- Result: All fields and validators seemed to be working fine and prompted my when they werent filled out. When the form was filled out and sumbitted I noticed that I was not alerted if it was successful or not. I there checked if the post was diplaying which it was but I noticed that the plaCeholder for the images was still displaying and this was unexpected. I then went to the admin panel to see if the data in the form was successfully posted to the database. I learned that everything was working perfectly except for the images files so there were a number of things that needed fixing.
+- Result: All fields and validators seemed to be working fine and prompted my when they werent filled out. When the form was filled out and sumbitted I noticed that I was not alerted if it was successful or not. I there checked if the post was diplaying which it was but I noticed that the placeholder for the images was still displaying and this was unexpected. I then went to the admin panel to see if the data in the form was successfully posted to the database. I learned that everything was working perfectly except for the images files so there were a number of things that needed fixing. I also noticed that my delete post form page had the heading "List Your Businees" which would've been misleading so this had to be changed. The form where not responsive for smaller screen and were very basic so needed some styling
 
-- Fix: I had to add enctype="multipart/form-data" to the form element so that images could be uploaded. This fixed the images problem straight away. 
+- Fix: I had to add enctype="multipart/form-data" to the form element so that images could be uploaded. This fixed the images problem straight away. I then fixed the heading on the Delete post form by creating a new template for the form and adjucting the view. I also installed crispy forms to make my forms look better and added some styling with bootstrap classes to make it fully responsive. I also added alerts for when the forms were created updated and deleted. I done this by adding the get_success_method()
+to my views. 
 
 #### Responsiveness
 - Expected: That all pages are fully responsive on all screen sizes small, medium and large.
 
-- Testing:I checked the responsiveness of each page in the chrome dev tools and selected every different screen size that was available.
+- Testing: I checked the responsiveness of each page in the chrome dev tools and selected every different screen size that was available.
 
-- Result: Some sections such as services setion and the forms were not responsive so they needed to be adjusted
+- Result: the and the forms were not responsive so they needed to be adjusted. there post detail page was also not responsive so needed some adjustment to the bootstrap classes.
 
-- Fix: I adjusted my bootstrap classes and div to make everything more responsive on small screens.
+- Fix: I adjusted my bootstrap classes and divs to make everything more responsive on small screens.
 
 #### User Account
 - Expected: Users can login, sign up and logout sucesssfully. They must provide a valid username and password. Once users are logged in they can use the authenticated functionality eg. making posts. When users login, logout or register they should be alerted if successful. If the user provides details that do not match the criteria they should be prompted and not able to make an account.
@@ -167,7 +163,7 @@ I have manually tested this project be doing the following:
 
 - Result: I was promped correctly for each, the mismatched passwords, for the password being to similar to username and also being to small. The username and passwords must not contain spaces and the user was prompted correctly. If an incorrect email was typed in it was not accepted and the user was prompted to fix it. Everything was working perfectly expect the user was not alerted upon a successful sign in or when logging out.
 
-- Fix: I had to add alert messages for when the user registered, logged in and logged out successfully.
+- Fix: I had to add alert messages for when the user registered, logged in and logged out successfully. I added the messages for loop to the 'base.html' file and the alert popped under just under the nave bar. I added "from django.contrib.messages import constants as messages" to the settings.py file along with all the message tags. I also added some JavaScript so that the messages faded away after 3 seconds. I done this by adding a script tag to the bottom of my 'base.html' page defining my messages by ID and a alert variable also and used the setTimeout function. 
 
 
 #### Validators
@@ -200,7 +196,9 @@ I have manually tested this project be doing the following:
 - [Chrome dev tools](https://developers.google.com/web/tools/chrome-devtools/) was used for debugging of the code and checking site for responsiveness
 - [Git](https://git-scm.com/) was used for version control within VSCode to push the code to GitHub
 - [GitHub](https://github.com/) was used as a remote repository to store project code
-- [Google Fonts](https://fonts.google.com/) - for typography in project
+- [Google Fonts](https://fonts.google.com/) - for the typography in the project
+- [Cripsy Forms](https://django-crispy-forms.readthedocs.io/en/latest/) - for styling my forms
+- Paint - for photoshop and editing images.
 
 ## Deployment
 
