@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 my-3 offset-md-2">
+
+      <h2 class="mb-3">Delete your Post</h2>
+
+      <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <button type="submit" class="btn btn-danger lg">Delete</button>
+
+      </form>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

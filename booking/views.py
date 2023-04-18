@@ -79,7 +79,7 @@ class UpdatePostView(
 class DeletePostView(UserPassesTestMixin, DeleteView):
     model = Post
     success_url = reverse_lazy("home")
-    template_name = 'create_post.html'
+    template_name = 'delete_post.html'
     success_message = "Post was deleted successfully"
 
     def get_success_message(self, cleaned_data):
