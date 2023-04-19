@@ -2,6 +2,8 @@
 
 EasyBook is an app designed for small business owners to make a post for their business and display all the relevant information about their business such as location, opening hours, services, contact info etc. By displaying this information it will make it easy for customers to find out about their business and make appointments online. Site users can create an account and then create a business post on our site. They have full CRUD functionality and can Create, Update and Delete posts. This Project was created during Agile development and is in its early stages with plans to add increasing functionality and value to the website.
 
+![EasyBook](/media/easybook.jpg )
+
 Live link can be found here - [EasyBook](#)
 
 ## User Stories
@@ -98,28 +100,69 @@ price
 - This feature is present throughout entire project and contains links to 'login' or 'register' at first and when a user who is logged in the displays links to 'manage posts' or 'logout'. the navbar is clean and simplistic and makes navigation around the site easy.
 - Feature is fully responsive and on smaller screen sizes it coverts into a 'Hamburger menu'
 
+![Navbar](/media/easybook-navbar.jpg )
+![Navbar small](/media/easybook-navbar-sm.jpg )
+
 #### HomePage
 
 - The HomePage consists of the business posts. The posts are displayed in a list view as cards. Once their are more than 8 posts the page is paginated and the user can navigate through the pages searching the posts. Each posts is displayed in a card with a featured image, the post title, the profession of the business owner, their location and a link to the post detail page.
+
+![Homepage](/media/easybook-homepage-1.jpg )
+![Homepage2](/media/easybook-homepage-2.jpg )
 
 #### Post Detail page
 
 - The post detail page consists are all the businesses information provided in the business post form. At the top of the page is the post title. Under the title is a carousel containing the feature image and any gallery images for the business. On the right hand side of the page is a coloumn containing more business information. at the top is a google maps iframe that will display the businesses location. Under here there is an About section where they can write a paragraph about their business. under this is the contact section displaying their email and phone number. their is also a opening hours section and socials section. Then there is the services section where the businesses can display all of their services they have created. The service name, price and duration is displayed. For Authenticated users there are buttons at the bottom of the page to update and delete the post list. when clicked the update buttom will bring users to a form page where then can update the post and the delete button to a page where they must submit the deletion.
 
+![EasyBook](/media/easybook-post-detail.jpg )
+![EasyBook](/media/easybook-post-detail-2.jpg )
+
+
 #### Services section
 - Then there is the services section where the businesses can display all of their services they have created. The service name, price and duration is displayed. Services are cretaed using the create service form on the manage posts page, They are linked to the post when created and then diplayed on the post detail page.
+
+![EasyBook](/media/easybook-services.jpg )
+![EasyBook](/media/easybook-services-2.jpg )
 
 #### Manage Posts 
 
 - The Manage Posts page can be access through the link in the navbar. Only authenticated users can access this page. the page is very simple and contains two buttons linking the the create business post form and the create services forms.
 
+![EasyBook](/media/easybook-manage-posts.jpg )
+
 #### Create Services Form
 
-- The create services form is very short and smiple. Users must provide the services name and the price and also provide the post the service is linked to. If a user tries to add a service to a post they didnt create they will be taken to a 404 error page.
+- The create services form is very short and smiple. Users must provide the services name and the price and also provide the post the service is linked to. If a user tries to add a service to a post they didnt create they will be taken to a 404 error page. There is also an update services form where the user can change the service name and price. and a delete service form where they can delete the service from the page and the database.
 
-#### Create Post Form
+![EasyBook](/media/easybook-create-service.jpg )
+![EasyBook](/media/easybook-update-service.jpg )
+![EasyBook](/media/easybook-delete-service.jpg )
 
-- The create post form consists are the post title, slug, profession, about, display services, location, city, feature image field and gallery image field along with their phone number and email which both have validators. their is also a stautus input where the user can make their post public or a draft for the admin panel.
+#### Post Forms
+
+- The create post form consists are the post title, slug, profession, about, location, city, feature image field and gallery image field along with their phone number and email which both have validators. their is also a stautus input where the user can make their post public or a draft for the admin panel. There is also an update post form where the user can change all the current data and a delete form where then can delete the post from the website and the database. All of the forms are styled with crispy forms and are connected to the database.
+
+![EasyBook](/media/easybook-create-post.jpg )
+![EasyBook](/media/easybook-create-post-2.jpg )
+![EasyBook](/media/easybook-update-post.jpg )
+![EasyBook](/media/easybook-delete-post.jpg )
+
+![EasyBook](/media/easybook-create-service.jpg )
+
+#### Sign Up page
+- The sign up page has a form for users to fill out asking for a username, email and password. There is also a message about why users should sign up. when a user successfully signs in there is an alert message displayed on the homepage. Once signed up users have access to our business post features.
+
+![EasyBook](/media/easybook-register.jpg )![EasyBook](/media/easybook-signin-alert.jpg )
+
+#### Sign In page
+-The sign in page asks for the users username and password and they can be authenticated.
+
+![EasyBook](/media/easybook-sign-in.jpg )![EasyBook](/media/easybook-signin-alert.jpg )
+
+#### Sign Out page
+- The sign out page is also very simple and users must confirm if they want to sign out. There is also an alert displayed when the users signs out. Once they sign out they will be redirected to the homepage but cannot access the account features anymore.
+
+![EasyBook](/media/easybook-signout.jpg )![EasyBook](/media/easybook-signout-alert.jpg )
 
 ### Future Features
 - Eventually I would like to have Account registion for customers where they have access to more features such as a rate and reviews section where then can rate the business they have used. I would also like to add a booking system so that users can make appointments as a specific time and date where they would also have full CRUD functionality where then can change and cancel appointments. The Business owner would also receive notice of the appointments made and could change or cancal dates to suit their needs aswell. 
