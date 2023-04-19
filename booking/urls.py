@@ -1,7 +1,16 @@
 from . import views
 from django.urls import path
-from .views import PostList, PostDetail, CreatePostView, UpdatePostView, DeletePostView, ManagePostView, CreateServiceView, UpdateServiceView, DeleteServiceView
-
+from .views import (
+    CreatePostView,
+    CreateServiceView,
+    DeletePostView,
+    DeleteServiceView,
+    ManagePostView,
+    PostDetail,
+    PostList,
+    UpdatePostView,
+    UpdateServiceView,
+)
 
 urlpatterns = [
     path("", PostList.as_view(), name="home"),
@@ -10,7 +19,19 @@ urlpatterns = [
     path("<slug:slug>/delete/", DeletePostView.as_view(), name="delete_post"),
     path("<slug:slug>/detail/", PostDetail.as_view(), name="post_detail"),
     path("manage_post/", ManagePostView.as_view(), name="manage_post"),
-    path("create_service/", CreateServiceView.as_view(), name="create_service"),
-    path("<pk>/update_service/", UpdateServiceView.as_view(), name="update_service"),
-    path("<pk>/delete_service/", DeleteServiceView.as_view(), name="delete_service"),
+    path(
+        "create_service/",
+        CreateServiceView.as_view(),
+        name="create_service"
+        ),
+    path(
+        "<pk>/update_service/",
+        UpdateServiceView.as_view(),
+        name="update_service"
+        ),
+    path(
+        "<pk>/delete_service/",
+        DeleteServiceView.as_view(),
+        name="delete_service"
+        )
 ]

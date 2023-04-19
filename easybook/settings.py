@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'cloudinary',
     'location_field.apps.DefaultConfig',
     'django_summernote',
+    'fontawesomefree',
     'booking',
     
 ]

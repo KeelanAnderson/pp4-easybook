@@ -9,8 +9,7 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib import messages
 from django.views.generic import CreateView, DetailView, UpdateView, DeleteView
 from .models import Post, Service
-from .forms import CreatePostForm, CreateServiceForm
-from .forms import UpdateServiceForm, DeleteServiceForm
+from .forms import CreatePostForm, CreateServiceForm, UpdateServiceForm
 
 
 class PostList(generic.ListView):
