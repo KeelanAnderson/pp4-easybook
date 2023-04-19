@@ -19,13 +19,13 @@ class Post(models.Model):
     display_services = models.ManyToManyField('Service', blank=True)
     city = models.CharField(max_length=255, default='n/a')
     location = PlainLocationField(based_fields=['city'], zoom=7, default='n/a')
-    featured_image = CloudinaryField('image', default='placeholder')
-    carousel_images = CloudinaryField('images', default='placeholder')
+    featured_image = CloudinaryField('Main Image', default='placeholder')
+    carousel_images = CloudinaryField('Gallery Image', default='placeholder')
     phone_regex = RegexValidator(regex=r'^\+?1?\d{9,15}$',
                                  message="Phone number must be in the format: '+999999999'. Up to 15 digits allowed.")
     phone_number = models.CharField(validators=[phone_regex], max_length=17, blank=False, default='n/a')
     email = models.EmailField(validators=[validate_email], blank=False, default='n/a')
-    status = models.IntegerField(choices=STATUS, default=0)
+    status = models.IntegerField(choices=STATUS, default=1)
     created_on = models.DateTimeField(default=timezone.now)
 
     class Meta:

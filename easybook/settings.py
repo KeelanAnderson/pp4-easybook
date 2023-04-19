@@ -54,6 +54,8 @@ INSTALLED_APPS = [
     'location_field.apps.DefaultConfig',
     'django_summernote',
     'fontawesomefree',
+    "crispy_forms",
+    "crispy_bootstrap4",
     'booking',
     
 ]
@@ -70,6 +72,10 @@ MESSAGE_TAGS = {
         messages.WARNING: 'alert-warning',
         messages.ERROR: 'alert-danger',
     }
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap4"
+
+CRISPY_TEMPLATE_PACK = "bootstrap4"
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

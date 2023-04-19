@@ -37,7 +37,7 @@
             </div>
             <h3 class="border-bottom pb-3">Services</h3>
             {% for service in services %}
-            <div class="col-sm-4">
+            <div class="col-sm-12">
                 <div class="">
                     <h5>{{ service.service_name }}</h5>
                 </div>
@@ -49,7 +49,7 @@
                 </div>
                 <div class="">
                     {% if user.is_authenticated %}
-                    <div class="col-md-6 mb-3 border-bottom">
+                    <div class="col-sm-12 mb-3 border-bottom">
                         
                         <a href="{% url 'update_service' service.id %}" class="btn btn-primary mb-3">Update</a>
                         <a href="{% url 'delete_service' service.id %}" class="btn btn-danger mb-3">Delete</a>
@@ -98,11 +98,11 @@
             <br>
             <div>
                 <h5>Socials</h5>
-                <ul class="list-inline">
-                    <li>facebook</li>
-                    <li>instagram</li>
-                    <li>twitter</li>
-                    <li>linkedin</li>
+                <ul class=" list-group list-group-horizontal">
+                    <li class="list-group-item"><a href="https://www.facebook.com/"><i class="text-dark fa-brands fa-square-facebook"></i></a></li>
+                    <li class="list-group-item"><a href="https://twitter.com/home"><i class=" text-dark fa-brands fa-twitter"></i></a></li>
+                    <li class="list-group-item"><a href="https://www.instagram.com/"><i class="text-dark fa-brands fa-instagram"></i></a></li>
+                    <li class="list-group-item"><a href="https://www.linkedin.com/"><i class="text-dark fa-brands fa-linkedin"></i></a></li>
                 </ul>
             </div>
         </section>
