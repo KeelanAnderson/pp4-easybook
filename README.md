@@ -4,7 +4,7 @@ EasyBook is an app designed for small business owners to make a post for their b
 
 ![EasyBook](/media/easybook.jpg )
 
-Live link can be found here - [EasyBook](#)
+Live link can be found here - [EasyBook](https://easybook.herokuapp.com/)
 
 ## User Stories
 
