@@ -24,9 +24,9 @@
 
                             <div class="image-container d-flex justify-content-center align-items-center">
                                 {% if "placeholder" in post.featured_image.url %}
-                                <img class="card-img-top" src="https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=612x612&w=0&k=20&c=rnCKVbdxqkjlcs3xH87-9gocETqpspHFXu5dIGB4wuM=">
+                                <img class="card-img-top" src="https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=612x612&w=0&k=20&c=rnCKVbdxqkjlcs3xH87-9gocETqpspHFXu5dIGB4wuM=" alt="placeholder">
                                 {% else %}
-                                <img class="card-img-top" src=" {{ post.featured_image.url }}">
+                                <img class="card-img-top" src=" {{ post.featured_image.url }}" alt="{{ post.title}} Feature Image">
                                 {% endif %}
                             </div>
                             <h4 class="card-title mt-3">{{ post.title }}</h4>

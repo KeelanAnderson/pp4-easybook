@@ -155,7 +155,7 @@ price
 ![EasyBook](/media/easybook-register.jpg )![EasyBook](/media/easybook-signin-alert.jpg )
 
 #### Sign In page
--The sign in page asks for the users username and password and they can be authenticated.
+- The sign in page asks for the users username and password and they can be authenticated.
 
 ![EasyBook](/media/easybook-sign-in.jpg )![EasyBook](/media/easybook-signin-alert.jpg )
 
@@ -195,7 +195,7 @@ to my views.
 
 - Testing: I checked the responsiveness of each page in the chrome dev tools and selected every different screen size that was available.
 
-- Result: the and the forms were not responsive so they needed to be adjusted. there post detail page was also not responsive so needed some adjustment to the bootstrap classes.
+- Result: the and the forms were not responsive so they needed to be adjusted. The post detail page was also not responsive so needed some adjustment to the bootstrap classes. The card images where also not responsive as they were a fixed height so this needed to be adjusted.
 
 - Fix: I adjusted my bootstrap classes and divs to make everything more responsive on small screens.
 
@@ -210,15 +210,16 @@ to my views.
 
 
 #### Validators
-- HTML
-- CSS
-- Python
+- HTML: No errors with Html although the Django tags were causing errors [HTML Validator](https://validator.w3.org/)
+- CSS: No errors found when passed through [CSS Validator](https://jigsaw.w3.org/css-validator/validator)
+- Python: No errors when passed through [PEP8 Linter](https://pep8ci.herokuapp.com/) and also Flake8 in the gitpod terminal.
+- JavaScript: I tested my javascript manually by checking if all of my message alerts dissappeared after 3 seconds.
 
 #### Performance
 
-- lighthouse
-- SEO
+- lighthouse: This was my performance result on lighthouse.
 
+![LightHouse](/media/easybook-lighthouse.jpg )
 
 ## Technologies Used
 

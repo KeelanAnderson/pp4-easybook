@@ -2,11 +2,10 @@
 
 {% block content %}
 
-
 <section class="container">
     <div class="row gx-5">
         <section class="col-md-8 col-sm-12">
-            <h1>{{ post.title }}</h1>
+            <h2>{{ post.title }}</h2>
             <div id="carouselExampleControls" class="carousel slide mb-3" data-ride="carousel">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
@@ -14,7 +13,7 @@
                         <img class="d-block w-100 img-fluid"
                             src="https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=612x612&w=0&k=20&c=rnCKVbdxqkjlcs3xH87-9gocETqpspHFXu5dIGB4wuM=">
                         {% else %}
-                        <img class="d-block w-100 img-fluid" src=" {{ post.featured_image.url }}">
+                        <img class="d-block w-100 img-fluid" src="{{ post.featured_image.url }}">
                         {% endif %}
                     </div>
                     <div class="carousel-item">
@@ -22,7 +21,7 @@
                         <img class="d-block w-100 img-fluid"
                             src="https://media.istockphoto.com/id/1147544807/vector/thumbnail-image-vector-graphic.jpg?s=612x612&w=0&k=20&c=rnCKVbdxqkjlcs3xH87-9gocETqpspHFXu5dIGB4wuM=">
                         {% else %}
-                        <img class="d-block w-100 img-fluid" src=" {{ post.gallery_image.url }}">
+                        <img class="d-block w-100 img-fluid" src="{{ post.gallery_image.url }}">
                         {% endif %}
                     </div>
                 </div>

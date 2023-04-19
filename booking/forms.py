@@ -15,9 +15,14 @@ class CreatePostForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(CreatePostForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper()
-        self.helper.add_input(Submit('submit', 'Create', css_class='my-3 btn-primary'))
-        self.helper.add_input(Button('cancel', 'Cancel', css_class='my-3 btn-secondary',
-                             onclick="window.location.href = '{}';".format(reverse('manage_post'))))
+        self.helper.add_input(
+            Submit('submit', 'Create', css_class='my-3 btn-primary')
+        )
+        self.helper.add_input(
+            Button('cancel', 'Cancel', css_class='my-3 btn-secondary',
+                   onclick="window.location.href = '{}';".format(
+                       reverse('manage_post')
+                   )))
         self.helper.form_method = 'POST'
 
     class Meta:
@@ -44,9 +49,14 @@ class CreateServiceForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(CreateServiceForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper()
-        self.helper.add_input(Submit('submit', 'Create', css_class='my-3 btn-primary'))
-        self.helper.add_input(Button('cancel', 'Cancel', css_class='my-3 btn-secondary',
-                             onclick="window.location.href = '{}';".format(reverse('manage_post'))))
+        self.helper.add_input(
+            Submit('submit', 'Create', css_class='my-3 btn-primary')
+        )
+        self.helper.add_input(
+            Button('cancel', 'Cancel', css_class='my-3 btn-secondary',
+                   onclick="window.location.href = '{}';".format(
+                       reverse('manage_post')
+                   )))
         self.helper.form_method = 'POST'
 
     class Meta:
@@ -59,12 +69,16 @@ class UpdateServiceForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(UpdateServiceForm, self).__init__(*args, **kwargs)
         self.helper = FormHelper()
-        self.helper.add_input(Submit('submit', 'Update', css_class='my-3 btn-primary'))
-        self.helper.add_input(Button('cancel', 'Cancel', css_class='my-3 btn-secondary',
-                             onclick="window.location.href = '{}';".format(reverse('manage_post'))))
+        self.helper.add_input(
+            Submit('submit', 'Update', css_class='my-3 btn-primary')
+        )
+        self.helper.add_input(
+            Button('cancel', 'Cancel', css_class='my-3 btn-secondary',
+                   onclick="window.location.href = '{}';".format(
+                       reverse('manage_post')
+                   )))
         self.helper.form_method = 'POST'
 
     class Meta:
         model = Service
         fields = ['service_name', 'price']
-

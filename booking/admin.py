@@ -11,7 +11,7 @@ class PostAdmin(SummernoteModelAdmin):
     prepopulated_fields = {'slug': ('title',)}
     summernote_fields = ('content')
 
+
 @admin.register(Service)
 class ServiceAdmin(admin.ModelAdmin):
     list_display = ['service_name', 'title', 'price']
-

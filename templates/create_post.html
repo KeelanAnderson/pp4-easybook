@@ -2,9 +2,7 @@
 
 {% block content %}
 
-
-
-<div class="container">
+<section class="container">
   <div class="row">
     <div class="col-md-8 my-3 offset-md-2">
 
@@ -16,23 +14,6 @@
       </form>
     </div>
   </div>
-</div>
+</section>
 
-{% endblock %}
-
-{% block extra_js %}
-<script>
-
-  const titleField = document.querySelector('#id_title');
-  const slugField = document.querySelector('#id_slug');
-
-  slugField.value = titleField.value.toLowerCase().replace(/\s+/g, '-');
-
-  // if title field is updated slug field is updated also
-
-  titleField.addEventListener('input', function() {
-    slugField.value = titleField.value.toLowerCase().replace(/\s+/g, '-');
-  });
-  
-</script>
 {% endblock %}
